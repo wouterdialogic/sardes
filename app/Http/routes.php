@@ -11,6 +11,14 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('schools.index');
+});
+Route::get('/schools', function () {
+    return view('schools.index');
+});
+
+Route::get('/', function () {
+    //return view('welcome');
 });
