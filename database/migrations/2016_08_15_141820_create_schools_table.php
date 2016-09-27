@@ -23,16 +23,23 @@ class CreateSchoolsTable extends Migration
             $table->string('bevoegd_gezag')->nullable();
             $table->string('website')->nullable();
 
-            $table->integer('score_1')->nullable();
-            $table->integer('score_2')->nullable();
-            $table->integer('score_3')->nullable();
-            $table->integer('score_4')->nullable();
-            $table->integer('score_5')->nullable();
-            $table->integer('binaire_score_1')->nullable();
-            $table->integer('binaire_score_2')->nullable();
-            $table->integer('binaire_score_3')->nullable();
-            $table->integer('binaire_score_4')->nullable();
-            $table->integer('binaire_score_5')->nullable();
+            $table->integer('aanbod_1')->nullable();
+            $table->integer('aanbod_2')->nullable();
+            $table->integer('aanbod_3')->nullable();
+            $table->integer('aanbod_4')->nullable();
+            $table->integer('aanbod_5')->nullable();
+
+            $table->integer('vraag_1')->nullable();
+            $table->integer('vraag_2')->nullable();
+            $table->integer('vraag_3')->nullable();
+            $table->integer('vraag_4')->nullable();
+            $table->integer('vraag_5')->nullable();
+
+            $table->string('rd_x')->nullable();
+            $table->string('rd_y')->nullable();
+
+            $table->string('wgs84_x')->nullable();
+            $table->string('wgs84_y')->nullable();
 
             $table->timestamps();
         });
