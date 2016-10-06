@@ -4,12 +4,7 @@
 
 <title>Sardes</title>
 
-<!-- load bootstrap from a cdn -->
-<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/css/bootstrap-combined.min.css"> -->
-<!-- <link rel="stylesheet" href="/css/app.css"> -->
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="shortcut icon" type="image/png" href="/img/compass.png"/>
-<!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
-<script src="/js/jquery-3.1.0.js"></script>
-<script src="/js/bootstrap.js"></script>
-
+<link rel="stylesheet" href="{{ URL::to('/css/bootstrap.min.css') }}">
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('/img/compass.png') }}"/>
+<script src="{{ URL::to('/js/jquery-3.1.0.js') }}"></script>
+<script src="{{ URL::to('/js/bootstrap.min.js') }}"></script>

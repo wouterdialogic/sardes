@@ -1,14 +1,24 @@
 @extends('layouts.default')
 @section('content')
 <br>
-<div class="col-md-12">
 	
+	@if(!isset($hide_search_window))
+	<div class="col-md-12">
 	<h2>Zoeken naar scholen</h2>
 	<form>
 		<div class="form-group">
 			<input type="text" class="form-control" id="zoekScholen" placeholder="Typ hier de naam van de school, of de plaats van de school">
 		</div>
 	</form>
+	@endif
+
+	@if(isset($hide_search_window))
+	<form hidden style="display: none;">
+		<div class="form-group">
+			<input type="text" class="form-control" id="zoekScholen" placeholder="Typ hier de naam van de school, of de plaats van de school" hidden style="display: none;">
+		</div>
+	</form>
+	@endif
 
 	@if(isset($schools))
 	@foreach($schools as $val => $school)
@@ -17,7 +27,7 @@
 
 		<div class="col-md-3"><center>
 			<br>
-			{{ Html::image("img/Efrain Marks I.jpg", 'alt', array( 'width' => 150, 'height' => 120 )) }}</center>
+			{{ Html::image("img/Efrain Marks I.jpg", 'alt', array( 'width' => 160, 'height' => 120 )) }}</center>
 			<?php $googleAdres = $school->adres.' '.$school->postcode.' '.$school->plaats; ?>
 		</div>
 
@@ -63,8 +73,8 @@
 
 	<script>
 //hugeimage: http://www.spitzer.caltech.edu/uploaded_files/images/0006/3034/ssc2008-11a12_Huge.jpg
-var image = '<img width="550" src="http://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0x18467e%7Clabel:0%7CAlbany,+NY" alt="Google Map of Albany, NY"">';
-var image = '<img width="550" src="http://www.astray.com/static/earth-huge.png?random=453456" alt="Google Map of Albany, NY"">';
+//var image = '<img width="550" src="http://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0x18467e%7Clabel:0%7CAlbany,+NY" alt="Google Map of Albany, NY"">';
+//var image = '<img width="550" src="http://www.astray.com/static/earth-huge.png?random=453456" alt="Google Map of Albany, NY"">';
 
 // Set our default popover options
 $.fn.popover.Constructor.DEFAULTS.trigger = 'click';
@@ -139,8 +149,6 @@ $(document).ready(function smoothScroll() {
 
 		if (document.getElementById("zoekScholen").value.length > 2) {
 			console.log("greater than 3");
-
-
 
 			$(".school").hide();
 

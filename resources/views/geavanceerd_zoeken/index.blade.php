@@ -8,9 +8,10 @@ $schools = '[]';
 ?>
 
 <!-- http://seiyria.com/bootstrap-slider/ --> 
-<link rel="stylesheet" href="/css/bootstrap-slider.css">
-<script src="/js/bootstrap-slider.js"></script>
-<script src="/js/vue.js"></script>
+
+<link rel="stylesheet" href="{{ URL::to('/css/bootstrap-slider.css') }}">
+<script src="{{ URL::to('/js/bootstrap-slider.js') }}"></script>
+<script src="{{ URL::to('/js/vue.js') }}"></script>
 
 <style type="text/css" media="screen">
 	.control-label {
@@ -22,14 +23,38 @@ $schools = '[]';
 		//background-color: #FBFAF1;
 	}
 
+	th {
+		font-weight: normal;
+		font-weight: none;
+		text-decoration: none;
+		text-decoration: normal;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+
 	.oneSchool {
 		//background-color: #CCDD22;
+	}
+
+	.popoverLeerlingen {
+		text-decoration: none !important;
+	}
+
+	.popoverLeerlingen,p {
+		text-decoration: none;
 	}
 
 	.oneSchoolHeader {
 		background-color: #F4FAFB;
 		//background-color: #94E1A8;
 		padding: 15px;
+	}
+	.showResultsLabel  {
+		font-size: 140%;
+		//font-family: arial;
 	}
 
 	.test {
@@ -77,7 +102,7 @@ $schools = '[]';
 	<div class="col-sm-8">
 		<div class="checkbox">
 			<label>			
-				<p ><strong>@{{ selected.length }} scholen getoond door selecties</strong></p>
+				<p ><strong>@{{ selected.length }} scholen</strong></p>
 			</label>
 		</div>
 	</div>
@@ -87,7 +112,7 @@ $schools = '[]';
 	<div class="col-sm-8">
 		<div class="checkbox">
 			<label>	
-				<p ><strong>@{{ selected.length }} scholen getoond door selecties</strong></p>
+				<p ><strong>@{{ selected.length }} scholen</strong></p>
 			</label>
 		</div>
 	</div>
@@ -220,13 +245,13 @@ $schools = '[]';
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr class="popoverLeerlingen2" data-trigger="hover" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title">
-			      <th scope="row""><div class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
+			    <tr>
+			      <th scope="row""><a class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
 1 - als het om leren gaat verschillen de kinderen heel weinig van elkaar <br>
 2 - als het om leren gaat verschillen de kinderen weinig van elkaar <br>
 3 - als het om leren gaat verschillen de kinderen niet zo veel van elkaar<br>
 4 - als het om leren gaat verschillen de kinderen veel van elkaar <br>
-5 - als het om leren gaat verschillen de kinderen heel veel van elkaar" data-placement="bottom" data-original-title="Toelichting">Leerlingen</div></th>
+5 - als het om leren gaat verschillen de kinderen heel veel van elkaar" data-placement="bottom" data-original-title="Toelichting"><p>Leerlingen</p></a></th>
 			      <td>
 			      <img v-for="n in school.meta_score_leerlingen / 5" src="{{asset('/img/icons/icoon leerlingen.svg')}}" height="25" >
 			      <img v-for="n in 5 - school.meta_score_leerlingen / 5" src="{{asset('/img/icons/icoon leerlingen grijs.svg')}}" height="25" >
@@ -234,7 +259,13 @@ $schools = '[]';
 			    </tr>
 
 			    <tr>
-			      <th scope="row">Onderwijs</th>
+			      <th scope="row"><a class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
+1 - De manier van lesgeven past niet bij elke leerling <br>
+2 - De manier van lesgeven past niet bij elke leerling <br>
+3 - De manier van lesgeven past bij de gemiddelde leerling <br>
+4 - De manier van lesgeven past bij de meeste leerlingen <br>
+5 - De manier van lesgeven past bij vrijwel iedere leerling
+" data-placement="bottom" data-original-title="Toelichting"><p>Onderwijs</p></a></th>
 			      <td>
 			      <img v-for="n in school.meta_score_onderwijs / 5" src="{{asset('/img/icons/icoon onderwijs.svg')}}" height="25" >
 			      <img v-for="n in 5 - school.meta_score_onderwijs / 5" src="{{asset('/img/icons/icoon onderwijs grijs.svg')}}" height="25" >
@@ -242,7 +273,12 @@ $schools = '[]';
 			    </tr>
 
 			    <tr>
-			      <th scope="row">Samenwerken</th>
+			      <th scope="row"><a class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
+1 - Deze school werkt nauwelijks samen met andere scholen<br>
+2 - Deze school werkt weinig samen met andere scholen<br>
+3 - Deze school werkt samen met andere scholen<br>
+4 - Deze school werkt veel samen met andere scholen<br>
+5 - Deze school werkt intensief samen met andere scholen" data-placement="bottom" data-original-title="Toelichting"><p>Samenwerken</p></a></th>
 			      <td>
 			      <img v-for="n in school.meta_score_samenwerken / 5" src="{{asset('/img/icons/icoon samenwerken.svg')}}" height="25" width="46">
 			      <img v-for="n in 5 - school.meta_score_samenwerken / 5" src="{{asset('/img/icons/icoon samenwerken grijs.svg')}}" height="25" width="46">
@@ -250,7 +286,13 @@ $schools = '[]';
 			    </tr>
 			    <tr>
 
-			      <th scope="row">Afspraken</th>
+			      <th scope="row"><a class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
+1 - Als leerlingen iets extra’s nodig hebben is nauwelijks iets vastgelegd<br>
+2 - Als leerlingen iets extra’s nodig hebben is niet alles duidelijk vastgelegd<br>
+3 - Als leerlingen iets extra’s nodig hebben zijn de belangrijkste zaken duidelijk vastgelegd<br>
+4 - Als leerlingen iets extra’s nodig hebben is bijna alles duidelijk vastgelegd<br> 
+5 - Als leerlingen iets extra’s nodig hebben is alles duidelijk vastgelegd 
+" data-placement="bottom" data-original-title="Toelichting"><p>Afspraken</p></a></th>
 			      <td>
 			      <img v-for="n in school.meta_score_afspraken / 5" src="{{asset('/img/icons/icoon afspraken.svg')}}" height="25" >
 			      <img v-for="n in 5 - school.meta_score_afspraken / 5" src="{{asset('/img/icons/icoon afspraken grijs.svg')}}" height="25" >
@@ -258,7 +300,12 @@ $schools = '[]';
 			    </tr>
 
 			    <tr>
-			      <th scope="row">Voorzieningen</th>
+			      <th scope="row"><a class="popoverLeerlingen" data-trigger="hover" rel="popover" data-content="
+1 - De school heeft heel weinig voorzieningen voor leerlingen die dat nodig hebben<br>
+2 - De school heeft weinig voorzieningen voor leerlingen die dat nodig hebben<br>
+3 - De school heeft het gebruikelijke aantal voorzieningen voor leerlingen die dat nodig hebben<br>
+4 - De school heeft veel voorzieningen voor leerlingen die dat nodig hebben<br>
+5 - De school heeft heel veel voorzieningen voor leerlingen die dat nodig hebben" data-placement="bottom" data-original-title="Toelichting"><p>Voorzieningen</p></a></th>
 			      <td>
 			      <img v-for="n in school.meta_score_voorzieningen / 5" src="{{asset('/img/icons/icoon voorzieningen.png')}}" height="25" >
 			      <img v-for="n in 5 - school.meta_score_voorzieningen / 5" src="{{asset('/img/icons/icoon voorzieningen grijs.svg')}}" height="25" >
@@ -276,7 +323,7 @@ $schools = '[]';
 </div>
 
 </div>
-
+<br><br><br><br><br>
 <script type="text/javascript">
 
 var sourceOfTruth = {
@@ -527,13 +574,14 @@ $(document).ready(function smoothScroll() {
 
 			}
 			//http://localhost:9999/api/getSchoolsOfPostcode/1742gb
-			xmlhttp.open("GET","/api/getSchoolsOfPostcode/"+str,true);
+			
+			xmlhttp.open("GET","{{ URL::to('/api/getSchoolsOfPostcode/') }}"+"/"+str,true);
 			xmlhttp.send();
 			//initializePopoverAfterAjax();	
 		}
 	}
 }); //einde document ready
 </script>
-<script src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-0.9.7.min.js"></script>
+<script src="{{ URL::to('https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-0.9.7.min.js') }}"></script>
 @stop
 
